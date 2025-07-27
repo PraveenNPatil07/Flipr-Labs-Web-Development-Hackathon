@@ -1,0 +1,39 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  :root {
+    --color-bg-primary: #F9FAFB;
+    --color-text-primary: #1F2937;
+    --color-bg-secondary: #F3F4F6;
+    --color-card-bg: #FFFFFF;
+    --color-border: #E5E7EB;
+    --color-input-bg: #edf2f7;
+    --color-input-text: #1F2937;
+    --color-placeholder-text: #A1A1AA;
+    --color-accent: #3B82F6; /* Blue for light mode */
+    --color-success: #10B981;
+    --color-danger: #f56565;
+  }
+
+  [data-theme='dark'] {
+    --color-bg-primary: #1E1E2F;
+    --color-text-primary: #FFFFFF;
+    --color-bg-secondary: #2C2C3A;
+    --color-card-bg: #252A3B;
+    --color-border: #3F3F46;
+    --color-input-bg: #2C2C3A;
+    --color-input-text: #FFFFFF;
+    --color-placeholder-text: #A1A1AA;
+    --color-accent: #60A5FA; /* Blue for dark mode */
+    --color-success: #4ADE80;
+    --color-danger: #fc8181;
+  }
+}
+
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

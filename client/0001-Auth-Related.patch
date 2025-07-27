@@ -1,0 +1,31 @@
+From b1e871a6f1d3793ee2d92415110686971eee2e91 Mon Sep 17 00:00:00 2001
+From: Praveen N Patil <patilpraveen1245@gmail.com>
+Date: Sun, 27 Jul 2025 16:47:46 +0530
+Subject: [PATCH] Auth Related
+
+---
+ src/context/AuthContext.js | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/context/AuthContext.js b/src/context/AuthContext.js
+index 0bdd1af..76b172d 100644
+--- a/src/context/AuthContext.js
++++ b/src/context/AuthContext.js
+@@ -16,8 +16,13 @@ export const AuthProvider = ({ children }) => {
+     }
+   }, [user]);
+ 
++  const logout = () => {
++    setUser(null);
++    // Optionally, redirect to login page or show a message
++  };
++
+   return (
+-    <AuthContext.Provider value={{ user, setUser }}>
++    <AuthContext.Provider value={{ user, setUser, logout }}>
+       {children}
+     </AuthContext.Provider>
+   );
+-- 
+2.46.0.windows.1
+
