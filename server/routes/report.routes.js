@@ -1,14 +1,14 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const {
+import {
   getInventoryValueReport,
   getStockMovementReport,
   getLowStockReport,
   getExpiryReport,
   getSalesPerformanceReport,
   getPurchaseHistoryReport
-} = require('../controllers/report.controller');
-const { protect, admin } = require('../middleware/auth.middleware');
+} from '../controllers/report.controller.js';
+import { protect, admin } from '../middleware/auth.middleware.js';
 
 // All report routes are admin-only
 router.get('/inventory-value', protect, admin, getInventoryValueReport);
@@ -18,4 +18,4 @@ router.get('/expiry', protect, admin, getExpiryReport);
 router.get('/sales-performance', protect, admin, getSalesPerformanceReport);
 router.get('/purchase-history', protect, admin, getPurchaseHistoryReport);
 
-module.exports = router;
+export default router;

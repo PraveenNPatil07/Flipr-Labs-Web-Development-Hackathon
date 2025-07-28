@@ -1,5 +1,5 @@
-const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config/database');
+import { sequelize } from '../config/database.js';
+import { DataTypes } from 'sequelize';
 
 const InventoryLog = sequelize.define('InventoryLog', {
   id: {
@@ -50,4 +50,4 @@ const InventoryLog = sequelize.define('InventoryLog', {
   timestamps: true
 });
 
-module.exports = InventoryLog;
+export default InventoryLog;

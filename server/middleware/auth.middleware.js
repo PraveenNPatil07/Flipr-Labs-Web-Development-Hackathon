@@ -1,5 +1,5 @@
-const jwt = require('jsonwebtoken');
-const { User } = require('../models');
+import { User } from '../models/index.js';
+import jwt from 'jsonwebtoken';
 
 /**
  * @function protect
@@ -60,4 +60,4 @@ const admin = (req, res, next) => {
   }
 };
 
-module.exports = { protect, admin };
+export { protect, admin };

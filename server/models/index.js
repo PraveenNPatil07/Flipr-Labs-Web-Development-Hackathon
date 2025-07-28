@@ -1,7 +1,7 @@
-import Product from './product.model.js';
 import InventoryLog from './inventoryLog.model.js';
 import NotificationPreference from './notificationPreference.model.js';
 import Notification from './notification.model.js';
+import Product from './product.model.js';
 import User from './user.model.js';
 import { sequelize } from '../config/database.js';
 
@@ -30,9 +30,9 @@ const syncDatabase = async () => {
 
 export {
   User,
-  Product,
   InventoryLog,
   NotificationPreference,
   Notification,
   syncDatabase
 };
+export { default as Product } from './product.model.js';

@@ -1,7 +1,7 @@
-const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config/database');
-const bcrypt = require('bcrypt');
-const NotificationPreference = require('./notificationPreference.model');
+import { sequelize } from '../config/database.js';
+import { DataTypes } from 'sequelize';
+import bcrypt from 'bcrypt';
+import NotificationPreference from './notificationPreference.model.js';
 
 const User = sequelize.define('User', {
   id: {
@@ -70,4 +70,4 @@ User.prototype.matchPassword = async function(enteredPassword) {
 User.hasOne(NotificationPreference, { foreignKey: 'userId', as: 'notificationPreferences' });
 NotificationPreference.belongsTo(User, { foreignKey: 'userId' });
 
-module.exports = User;
+export default User;

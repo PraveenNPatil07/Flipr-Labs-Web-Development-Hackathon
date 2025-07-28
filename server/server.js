@@ -1,10 +1,10 @@
-const express = require('express');
-const cors = require('cors');
-const cookieParser = require('cookie-parser');
-const dotenv = require('dotenv');
-const { connectDB } = require('./config/database');
-const { syncDatabase } = require('./models');
-const { seedDatabase } = require('./utils/seedData');
+import express from 'express';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
+import dotenv from 'dotenv';
+import { connectDB } from './config/database.js';
+import { syncDatabase } from './models/index.js';
+import { seedDatabase } from './utils/seedData.js';
 
 // Load environment variables
 dotenv.config();
@@ -34,15 +34,22 @@ app.get('/', (req, res) => {
 });
 
 // Import routes
-app.use('/api/auth', require('./routes/auth.routes'));
-app.use('/api/users', require('./routes/user.routes'));
-app.use('/api/products', require('./routes/product.routes'));
-app.use('/api/inventory', require('./routes/inventory.routes'));
-app.use('/api/notifications', require('./routes/notification.routes'));
-app.use('/api/reports', require('./routes/report.routes'));
+import authRoutes from './routes/auth.routes.js';
+import userRoutes from './routes/user.routes.js';
+import productRoutes from './routes/product.routes.js';
+import inventoryRoutes from './routes/inventory.routes.js';
+import notificationRoutes from './routes/notification.routes.js';
+import reportRoutes from './routes/report.routes.js';
+
+app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/inventory', inventoryRoutes);
+app.use('/api/notifications', notificationRoutes);
+app.use('/api/reports', reportRoutes);
 
 // Import error handler
-const { errorHandler } = require('./utils/error.utils');
+import { errorHandler } from './utils/error.utils.js';
 
 // Error handling middleware
 app.use(errorHandler);

@@ -1,5 +1,5 @@
-const jwt = require('jsonwebtoken');
-const { User, NotificationPreference } = require('../models');
+import { User, NotificationPreference } from '../models/index.js';
+import jwt from 'jsonwebtoken';
 
 /**
  * @desc Generates a JWT token for a given user ID.
@@ -208,10 +208,10 @@ const updateUserProfile = async (req, res) => {
   }
 };
 
-module.exports = {
+export {
   register,
   login,
   logout,
   getUserProfile,
   updateUserProfile
- };
+};

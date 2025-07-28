@@ -1,6 +1,6 @@
-const { User, NotificationPreference } = require('../models');
-const { ValidationError } = require('../utils/error.utils');
-const { isValidEmail, validatePassword } = require('../utils/validation.utils');
+import { ValidationError } from '../utils/error.utils.js';
+import { isValidEmail, validatePassword } from '../utils/validation.utils.js';
+import { User, NotificationPreference } from '../models/index.js';
 
 /**
  * @desc Get all users
@@ -233,7 +233,7 @@ const deleteUser = async (req, res) => {
   }
 };
 
-module.exports = {
+export {
   getUsers,
   getUserById,
   createUser,
