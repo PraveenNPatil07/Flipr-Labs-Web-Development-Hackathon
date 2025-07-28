@@ -4,28 +4,27 @@ A comprehensive inventory management system built for the Hackathon. This applic
 
 ## Features
 
-- **Dark Mode**
-  - Toggle between light and dark themes
-  - Class-based dark mode implementation with Tailwind CSS
-  - Customizable color palette for both themes
-
 - **User Authentication & Authorization**
+
   - Secure login and registration
   - Role-based access control (Admin and Staff)
   - JWT-based authentication
 
 - **Product Management**
+
   - Add, edit, and delete products
   - Categorize products
   - Track product details (SKU, barcode, price, etc.)
   - Set stock thresholds for low stock alerts
 
 - **Inventory Control**
+
   - Track stock levels
   - Log inventory movements (additions, removals, adjustments)
   - View inventory history
 
 - **Notifications**
+
   - Low stock alerts
   - Customizable notification preferences
   - Email notifications
@@ -39,6 +38,7 @@ A comprehensive inventory management system built for the Hackathon. This applic
 ## Tech Stack
 
 ### Backend
+
 - Node.js
 - Express.js
 - PostgreSQL
@@ -46,6 +46,7 @@ A comprehensive inventory management system built for the Hackathon. This applic
 - JWT Authentication
 
 ### Frontend
+
 - React.js
 - React Router
 - Context API for state management
@@ -77,8 +78,20 @@ A comprehensive inventory management system built for the Hackathon. This applic
 │   └── utils/              # Utility functions
 │
 ├── database/               # Database scripts and migrations
-└── documentation/          # Project documentation
-```
+└── docs/                   # Project documentation
+    └── dark_mode.md        # Detailed documentation on dark mode implementation
+    └── api/                # Contains API documentation for various modules.
+
+## Documentation
+
+- [Dark Mode Implementation](docs/dark_mode.md)
+- [API Documentation - Authentication](docs/api/auth.api.md)
+- [API Documentation - Users](docs/api/user.api.md)
+- [API Documentation - Products](docs/api/product.api.md)
+- [API Documentation - Inventory](docs/api/inventory.api.md)
+- [API Documentation - Notifications](docs/api/notification.api.md)
+- [API Documentation - Reports](docs/api/report.api.md)
+
 
 ## Getting Started
 
@@ -91,30 +104,36 @@ A comprehensive inventory management system built for the Hackathon. This applic
 ### Installation
 
 1. Clone the repository
-   ```
-   git clone <repository-url>
-   cd inventory-management-system
-   ```
+```
+
+git clone <repository-url>
+cd inventory-management-system
+
+```
 
 2. Install backend dependencies
-   ```
-   cd server
-   npm install
-   ```
+```
+
+cd server
+npm install
+
+```
 
 3. Install frontend dependencies
-   ```
-   cd ../client
-   npm install
-   ```
+```
+
+cd ../client
+npm install
+
+```
 
 4. Set up environment variables
-   - Create a `.env` file in the server directory based on the `.env.example` template
-   - Configure your database connection and other settings
+- Create a `.env` file in the server directory based on the `.env.example` template
+- Configure your database connection and other settings
 
 5. Start the development servers
-   - Backend: `cd server && npm run dev`
-   - Frontend: `cd client && npm start`
+- Backend: `cd server && npm run dev`
+- Frontend: `cd client && npm start`
 
 ## API Endpoints
 
@@ -167,3 +186,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - [React.js](https://reactjs.org/)
 - [Sequelize](https://sequelize.org/)
 - [PostgreSQL](https://www.postgresql.org/)
+```

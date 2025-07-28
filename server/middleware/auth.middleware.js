@@ -1,7 +1,14 @@
 const jwt = require('jsonwebtoken');
 const { User } = require('../models');
 
-// Middleware to protect routes - verify token
+/**
+ * @function protect
+ * @description Middleware to protect routes, verifying the JWT token from cookies or Authorization header.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @param {Function} next - The next middleware function.
+ * @returns {void} Calls next() if authorized, otherwise sends a 401 or 403 response.
+ */
 const protect = async (req, res, next) => {
   let token;
 
@@ -37,7 +44,14 @@ const protect = async (req, res, next) => {
   }
 };
 
-// Middleware to check if user is admin
+/**
+ * @function admin
+ * @description Middleware to check if the authenticated user has an 'Admin' role.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @param {Function} next - The next middleware function.
+ * @returns {void} Calls next() if the user is an admin, otherwise sends a 403 response.
+ */
 const admin = (req, res, next) => {
   if (req.user && req.user.role === 'Admin') {
     next();

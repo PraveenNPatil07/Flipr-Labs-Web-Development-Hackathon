@@ -4,9 +4,14 @@ import User from '../models/user.model.js';
 import { Op, literal, fn } from 'sequelize';
 import { sequelize } from '../config/database.js';
 
-// @desc    Get inventory value report
-// @route   GET /api/reports/inventory-value
-// @access  Private/Admin
+/**
+ * @desc Generates a report on the total inventory value, broken down by category, and lists top products by value.
+ * @route GET /api/reports/inventory-value
+ * @access Private/Admin
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @returns {void} Sends a JSON response with inventory value statistics.
+ */
 const getInventoryValueReport = async (req, res) => {
   try {
     const categoryValues = await Product.findAll({
@@ -49,9 +54,17 @@ const getInventoryValueReport = async (req, res) => {
   }
 };
 
-// @desc    Get stock movement report
-// @route   GET /api/reports/stock-movement
-// @access  Private/Admin
+/**
+ * @desc Generates a report on stock movements, including movements by action, by day, top moved products, and top active users.
+ * @route GET /api/reports/stock-movement
+ * @access Private/Admin
+ * @param {Object} req - The request object.
+ * @param {Object} req.query - Query parameters for date range.
+ * @param {string} [req.query.startDate] - Start date for the report (ISO 8601 format). Defaults to one month ago.
+ * @param {string} [req.query.endDate] - End date for the report (ISO 8601 format). Defaults to current date.
+ * @param {Object} res - The response object.
+ * @returns {void} Sends a JSON response with stock movement statistics.
+ */
 const getStockMovementReport = async (req, res) => {
   try {
     const { startDate, endDate } = req.query;
@@ -152,9 +165,14 @@ const getStockMovementReport = async (req, res) => {
   }
 };
 
-// @desc    Get low stock report
-// @route   GET /api/reports/low-stock
-// @access  Private/Admin
+/**
+ * @desc Generates a report on products that are currently in low stock, categorized and ordered by stock ratio.
+ * @route GET /api/reports/low-stock
+ * @access Private/Admin
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @returns {void} Sends a JSON response with low stock product details.
+ */
 const getLowStockReport = async (req, res) => {
   try {
     const lowStockProducts = await Product.findAll({
@@ -169,82 +187,24 @@ const getLowStockReport = async (req, res) => {
       order: [['ratio', 'ASC']]
     });
 
-// @desc    Get sales performance report
-// @route   GET /api/reports/sales-performance
-// @access  Private/Admin
-const getSalesPerformanceReport = async (req, res) => {
-  try {
-    // Implement sales performance report logic here
-    res.status(200).json({ message: 'Sales performance report data (placeholder)' });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Server error', error: error.message });
-  }
-};
-
-// @desc    Get purchase history report
-// @route   GET /api/reports/purchase-history
-// @access  Private/Admin
-const getPurchaseHistoryReport = async (req, res) => {
-  try {
-    // Implement purchase history report logic here
-    res.status(200).json({ message: 'Purchase history report data (placeholder)' });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Server error', error: error.message });
-  }
-};
-
-    const lowStockByCategory = await Product.findAll({
-      attributes: [
-        'category',
-        [fn('COUNT', sequelize.literal('id')), 'productCount']
-      ],
-      where: {
-        stock: {
-          [Op.lte]: sequelize.literal('threshold')
-        }
-      },
-      group: ['category'],
-      order: [['productCount', 'DESC']]
-    });
-
-    const outOfStockProducts = await Product.findAll({
-      where: { stock: 0 },
-      order: [['name', 'ASC']]
-    });
-
-    const criticalStockProducts = await Product.findAll({
-      where: {
-        stock: {
-          [Op.gt]: 0,
-          [Op.lte]: literal('"threshold" * 0.25')
-        }
-      },
-      attributes: {
-        include: [[literal('"stock" / "threshold"'), 'ratio']]
-      },
-      order: [['ratio', 'ASC']]
-    });
-
     res.json({
-      lowStockCount: lowStockProducts.length,
-      outOfStockCount: outOfStockProducts.length,
-      criticalStockCount: criticalStockProducts.length,
-      lowStockProducts,
-      lowStockByCategory,
-      outOfStockProducts,
-      criticalStockProducts
+      lowStockProducts
     });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server error', error: error.message });
-  }
-};
-
-// @desc    Get sales performance report
-// @route   GET /api/reports/sales-performance
-// @access  Private/Admin
+  }}
+/**
+ * @desc Generates a sales performance report.
+ * @route GET /api/reports/sales-performance
+ * @access Private/Admin
+ * @param {Object} req - The request object.
+ * @param {Object} req.query - Query parameters for date range.
+ * @param {string} [req.query.startDate] - Start date for the report (ISO 8601 format). Defaults to one month ago.
+ * @param {string} [req.query.endDate] - End date for the report (ISO 8601 format). Defaults to current date.
+ * @param {Object} res - The response object.
+ * @returns {void} Sends a JSON response with sales performance data.
+ */
 const getSalesPerformanceReport = async (req, res) => {
   try {
     const { startDate, endDate } = req.query;
@@ -275,9 +235,17 @@ const getSalesPerformanceReport = async (req, res) => {
   }
 };
 
-// @desc    Get purchase history report
-// @route   GET /api/reports/purchase-history
-// @access  Private/Admin
+/**
+ * @desc Generates a purchase history report.
+ * @route GET /api/reports/purchase-history
+ * @access Private/Admin
+ * @param {Object} req - The request object.
+ * @param {Object} req.query - Query parameters for date range.
+ * @param {string} [req.query.startDate] - Start date for the report (ISO 8601 format). Defaults to one month ago.
+ * @param {string} [req.query.endDate] - End date for the report (ISO 8601 format). Defaults to current date.
+ * @param {Object} res - The response object.
+ * @returns {void} Sends a JSON response with purchase history data.
+ */
 const getPurchaseHistoryReport = async (req, res) => {
   try {
     const { startDate, endDate } = req.query;
@@ -308,9 +276,14 @@ const getPurchaseHistoryReport = async (req, res) => {
   }
 };
 
-// @desc    Get product expiry report
-// @route   GET /api/reports/expiry
-// @access  Private/Admin
+/**
+ * @desc Generates a report on product expiry, including expired, expiring soon, and expiry by month.
+ * @route GET /api/reports/expiry
+ * @access Private/Admin
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @returns {void} Sends a JSON response with product expiry statistics.
+ */
 const getExpiryReport = async (req, res) => {
   try {
     const today = new Date();
@@ -373,7 +346,6 @@ const getExpiryReport = async (req, res) => {
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 };
-
 export {
   getInventoryValueReport,
   getStockMovementReport,
@@ -381,4 +353,4 @@ export {
   getExpiryReport,
   getSalesPerformanceReport,
   getPurchaseHistoryReport
-};
+}

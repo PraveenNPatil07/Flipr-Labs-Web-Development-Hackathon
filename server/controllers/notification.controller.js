@@ -1,8 +1,13 @@
 const { NotificationPreference, User, Notification } = require('../models');
 
-// @desc    Get user notification preferences
-// @route   GET /api/notifications/preferences
-// @access  Private
+/**
+ * @desc Retrieves the notification preferences for the authenticated user.
+ * @route GET /api/notifications/preferences
+ * @access Private
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @returns {void} Sends a JSON response with the user's notification preferences.
+ */
 const getNotificationPreferences = async (req, res) => {
   try {
     const preferences = await NotificationPreference.findOne({
@@ -20,9 +25,19 @@ const getNotificationPreferences = async (req, res) => {
   }
 };
 
-// @desc    Update user notification preferences
-// @route   PUT /api/notifications/preferences
-// @access  Private
+/**
+ * @desc Updates the notification preferences for the authenticated user.
+ * @route PUT /api/notifications/preferences
+ * @access Private
+ * @param {Object} req - The request object.
+ * @param {Object} req.body - The request body containing the notification preferences to update.
+ * @param {boolean} [req.body.emailEnabled] - Whether email notifications are enabled.
+ * @param {boolean} [req.body.browserEnabled] - Whether browser notifications are enabled.
+ * @param {boolean} [req.body.slackEnabled] - Whether Slack notifications are enabled.
+ * @param {number} [req.body.lowStockThreshold] - The threshold for low stock notifications.
+ * @param {Object} res - The response object.
+ * @returns {void} Sends a JSON response with the updated notification preferences.
+ */
 const updateNotificationPreferences = async (req, res) => {
   try {
     const { emailEnabled, browserEnabled, slackEnabled, lowStockThreshold } = req.body;
@@ -56,9 +71,16 @@ const updateNotificationPreferences = async (req, res) => {
   }
 };
 
-// @desc    Send test notification
-// @route   POST /api/notifications/test
-// @access  Private
+/**
+ * @desc Sends a test notification of a specified type to the authenticated user.
+ * @route POST /api/notifications/test
+ * @access Private
+ * @param {Object} req - The request object.
+ * @param {Object} req.body - The request body containing the type of notification to send.
+ * @param {'email'|'browser'|'slack'} req.body.type - The type of test notification to send.
+ * @param {Object} res - The response object.
+ * @returns {void} Sends a JSON response indicating the success of the test notification.
+ */
 const sendTestNotification = async (req, res) => {
   try {
     const { type } = req.body;
@@ -84,9 +106,14 @@ const sendTestNotification = async (req, res) => {
   }
 };
 
-// @desc    Get all notifications for a user
-// @route   GET /api/notifications
-// @access  Private
+/**
+ * @desc Retrieves all notifications for the authenticated user, ordered by creation date.
+ * @route GET /api/notifications
+ * @access Private
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @returns {void} Sends a JSON response with an array of notifications.
+ */
 const getNotifications = async (req, res) => {
   try {
     const notifications = await Notification.findAll({
@@ -101,9 +128,16 @@ const getNotifications = async (req, res) => {
   }
 };
 
-// @desc    Mark a notification as read
-// @route   PUT /api/notifications/:id/read
-// @access  Private
+/**
+ * @desc Marks a specific notification as read for the authenticated user.
+ * @route PUT /api/notifications/:id/read
+ * @access Private
+ * @param {Object} req - The request object.
+ * @param {Object} req.params - The route parameters.
+ * @param {string} req.params.id - The ID of the notification to mark as read.
+ * @param {Object} res - The response object.
+ * @returns {void} Sends a JSON response indicating the notification has been marked as read.
+ */
 const markNotificationAsRead = async (req, res) => {
   try {
     const { id } = req.params;
@@ -126,9 +160,14 @@ const markNotificationAsRead = async (req, res) => {
   }
 };
 
-// @desc    Mark all notifications as read
-// @route   PUT /api/notifications/read-all
-// @access  Private
+/**
+ * @desc Marks all unread notifications as read for the authenticated user.
+ * @route PUT /api/notifications/read-all
+ * @access Private
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @returns {void} Sends a JSON response indicating all notifications have been marked as read.
+ */
 const markAllNotificationsAsRead = async (req, res) => {
   try {
     await Notification.update(

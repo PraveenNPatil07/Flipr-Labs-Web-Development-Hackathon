@@ -4,7 +4,19 @@ import Product from '../models/product.model.js';
 import InventoryLog from '../models/inventoryLog.model.js';
 import User from '../models/user.model.js';
 
-// @desc Update product stock
+/**
+ * @desc Updates the stock of a product and logs the inventory movement.
+ * @route POST /api/inventory/update
+ * @access Private
+ * @param {Object} req - The request object.
+ * @param {Object} req.body - The request body containing inventory update details.
+ * @param {string} req.body.productId - The ID of the product to update.
+ * @param {'Add'|'Remove'|'Update'} req.body.action - The type of inventory action.
+ * @param {number} req.body.quantity - The quantity to add, remove, or set.
+ * @param {string} [req.body.notes] - Optional notes for the inventory log.
+ * @param {Object} res - The response object.
+ * @returns {void} Sends a JSON response with the updated inventory log details.
+ */
 const updateStock = async (req, res) => {
   const transaction = await sequelize.transaction();
   try {
@@ -78,7 +90,22 @@ const updateStock = async (req, res) => {
   }
 };
 
-// @desc Get inventory logs
+/**
+ * @desc Retrieves a list of inventory logs with optional filtering and pagination.
+ * @route GET /api/inventory/logs
+ * @access Private
+ * @param {Object} req - The request object.
+ * @param {Object} req.query - The query parameters for filtering and pagination.
+ * @param {string} [req.query.productId] - Filter logs by product ID.
+ * @param {string} [req.query.userId] - Filter logs by user ID.
+ * @param {'Add'|'Remove'|'Update'} [req.query.action] - Filter logs by action type.
+ * @param {string} [req.query.startDate] - Filter logs from this date (ISO 8601).
+ * @param {string} [req.query.endDate] - Filter logs up to this date (ISO 8601).
+ * @param {number} [req.query.limit=50] - The maximum number of logs to return per page.
+ * @param {number} [req.query.page=1] - The page number for pagination.
+ * @param {Object} res - The response object.
+ * @returns {void} Sends a JSON response with the paginated inventory logs and total count.
+ */
 const getInventoryLogs = async (req, res) => {
   try {
     const { productId, userId, action, startDate, endDate, limit = 50, page = 1 } = req.query;
@@ -120,7 +147,14 @@ const getInventoryLogs = async (req, res) => {
   }
 };
 
-// @desc Get low stock products
+/**
+ * @desc Retrieves a list of products that are currently in low stock (stock <= threshold).
+ * @route GET /api/inventory/low-stock
+ * @access Private
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @returns {void} Sends a JSON response with an array of low stock products.
+ */
 const getLowStockProducts = async (req, res) => {
   try {
     const lowStockProducts = await Product.findAll({
@@ -137,7 +171,14 @@ const getLowStockProducts = async (req, res) => {
   }
 };
 
-// @desc Get inventory statistics
+/**
+ * @desc Retrieves various statistics about the inventory, including total products, stock value, low stock count, out of stock count, and recent activity.
+ * @route GET /api/inventory/stats
+ * @access Private
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @returns {void} Sends a JSON response with inventory statistics.
+ */
 const getInventoryStats = async (req, res) => {
   try {
     const totalProducts = await Product.count();

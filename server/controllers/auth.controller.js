@@ -1,16 +1,30 @@
 const jwt = require('jsonwebtoken');
 const { User, NotificationPreference } = require('../models');
 
-// Generate JWT token
+/**
+ * @desc Generates a JWT token for a given user ID.
+ * @param {string} id - The user ID for which to generate the token.
+ * @returns {string} A signed JWT token.
+ */
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN
   });
 };
 
-// @desc    Register a new user
-// @route   POST /api/auth/register
-// @access  Public
+/**
+ * @desc Registers a new user in the system.
+ * @route POST /api/auth/register
+ * @access Public
+ * @param {Object} req - The request object.
+ * @param {Object} req.body - The request body containing user details.
+ * @param {string} req.body.username - The username of the new user.
+ * @param {string} req.body.email - The email of the new user.
+ * @param {string} req.body.password - The password of the new user.
+ * @param {string} [req.body.role='Staff'] - The role of the new user (e.g., 'Admin', 'Staff').
+ * @param {Object} res - The response object.
+ * @returns {void} Sends a JSON response with user details and a JWT token in a cookie.
+ */
 const register = async (req, res) => {
   try {
     const { username, email, password, role } = req.body;
@@ -56,9 +70,17 @@ const register = async (req, res) => {
   }
 };
 
-// @desc    Login user
-// @route   POST /api/auth/login
-// @access  Public
+/**
+ * @desc Authenticates a user and logs them into the system.
+ * @route POST /api/auth/login
+ * @access Public
+ * @param {Object} req - The request object.
+ * @param {Object} req.body - The request body containing login credentials.
+ * @param {string} req.body.email - The email of the user.
+ * @param {string} req.body.password - The password of the user.
+ * @param {Object} res - The response object.
+ * @returns {void} Sends a JSON response with user details and a JWT token in a cookie.
+ */
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -90,9 +112,14 @@ const login = async (req, res) => {
   }
 };
 
-// @desc    Logout user
-// @route   POST /api/auth/logout
-// @access  Private
+/**
+ * @desc Logs out the current user by clearing the JWT token cookie.
+ * @route POST /api/auth/logout
+ * @access Private
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @returns {void} Sends a JSON response indicating successful logout.
+ */
 const logout = (req, res) => {
   res.cookie('token', '', {
     httpOnly: true,
@@ -102,9 +129,14 @@ const logout = (req, res) => {
   res.status(200).json({ message: 'Logged out successfully' });
 };
 
-// @desc    Get user profile
-// @route   GET /api/auth/profile
-// @access  Private
+/**
+ * @desc Retrieves the profile of the authenticated user.
+ * @route GET /api/auth/profile
+ * @access Private
+ * @param {Object} req - The request object, containing the authenticated user's ID.
+ * @param {Object} res - The response object.
+ * @returns {void} Sends a JSON response with the user's profile and notification preferences.
+ */
 const getUserProfile = async (req, res) => {
   try {
     const user = await User.findByPk(req.user.id, {
@@ -127,9 +159,15 @@ const getUserProfile = async (req, res) => {
   }
 };
 
-// @desc    Update user profile
-// @route   PUT /api/auth/profile
-// @access  Private
+/**
+ * @desc Updates the profile of the authenticated user.
+ * @route PUT /api/auth/profile
+ * @access Private
+ * @param {Object} req - The request object, containing the authenticated user's ID and update data.
+ * @param {Object} req.body - The request body containing fields to update (username, email, password, firstName, lastName, notificationPreferences).
+ * @param {Object} res - The response object.
+ * @returns {void} Sends a JSON response with the updated user's profile.
+ */
 const updateUserProfile = async (req, res) => {
   try {
     const user = await User.findByPk(req.user.id);

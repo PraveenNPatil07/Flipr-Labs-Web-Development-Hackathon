@@ -2,8 +2,9 @@
   "name": "server",
   "version": "1.0.0",
   "main": "server.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --require @babel/register --experimental-json-modules --no-warnings tests/*.test.js",
     "start": "node server.js",
     "dev": "nodemon server.js",
     "seed": "node -e \"require('./utils/seedData').seedDatabase()\"",
@@ -27,6 +28,10 @@
     "sequelize": "^6.37.7"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "@babel/register": "^7.27.1",
+    "chai": "^5.2.1",
+    "mocha": "^11.7.1",
+    "nodemon": "^3.1.10",
+    "sinon": "^21.0.0"
   }
 }

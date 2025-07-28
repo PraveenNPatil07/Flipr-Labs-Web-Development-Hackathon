@@ -1,6 +1,6 @@
-.navigation {
-  background-color: #2c3e50;
-  color: white;
+.navigation.navbar {
+  background-color: var(--color-card-bg);
+  color: var(--color-text-primary);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -18,7 +18,7 @@
 }
 
 .nav-logo a {
-  color: white;
+  color: var(--color-text-primary);
   text-decoration: none;
   font-size: 20px;
   font-weight: 700;
@@ -37,7 +37,7 @@
 }
 
 .nav-links li a {
-  color: #ecf0f1;
+  color: var(--color-text-secondary);
   text-decoration: none;
   padding: 10px 15px;
   display: block;
@@ -46,11 +46,11 @@
 }
 
 .nav-links li a:hover {
-  color: #3498db;
+  color: var(--color-accent);
 }
 
 .nav-links li.active a {
-  color: #3498db;
+  color: var(--color-accent);
 }
 
 .nav-links li.active::after {
@@ -60,14 +60,14 @@
   left: 15px;
   right: 15px;
   height: 3px;
-  background-color: #3498db;
+  background-color: var(--color-accent);
   border-radius: 3px;
 }
 
 .nav-logout button {
   background-color: transparent;
-  border: 1px solid #e74c3c;
-  color: #e74c3c;
+  border: 1px solid var(--color-danger);
+  color: var(--color-danger);
   padding: 8px 15px;
   border-radius: 4px;
   cursor: pointer;
@@ -76,7 +76,7 @@
 }
 
 .nav-logout button:hover {
-  background-color: #e74c3c;
+  background-color: var(--color-danger);
   color: white;
 }
 
@@ -90,11 +90,12 @@
 .user-name {
   font-weight: 600;
   font-size: 14px;
+  color: var(--color-text-primary);
 }
 
 .user-role {
   font-size: 12px;
-  color: #bdc3c7;
+  color: var(--color-text-secondary);
 }
 
 .nav-user-info {
@@ -115,7 +116,7 @@
 .mobile-menu-toggle span {
   height: 3px;
   width: 100%;
-  background-color: white;
+  background-color: var(--color-text-primary);
   border-radius: 3px;
   transition: all 0.3s;
 }
@@ -137,7 +138,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #2c3e50;
+    background-color: var(--color-card-bg);
     flex-direction: column;
     align-items: center;
     justify-content: center;

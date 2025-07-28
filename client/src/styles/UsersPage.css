@@ -13,11 +13,11 @@
 
 .users-header h1 {
   margin: 0;
-  color: #333;
+  color: var(--color-text-primary);
 }
 
 .add-user-btn {
-  background-color: #4caf50;
+  background-color: var(--color-success);
   color: white;
   border: none;
   padding: 10px 15px;
@@ -30,7 +30,7 @@
 }
 
 .add-user-btn:hover {
-  background-color: #45a049;
+  background-color: #157347;
 }
 
 .users-loading,
@@ -39,15 +39,15 @@
   text-align: center;
   padding: 20px;
   font-size: 16px;
-  color: #666;
-  background-color: #f9f9f9;
+  color: var(--color-text-secondary);
+  background-color: var(--color-bg-secondary);
   border-radius: 4px;
   margin-top: 20px;
 }
 
 .users-error {
-  color: #d32f2f;
-  background-color: #ffebee;
+  color: var(--color-danger);
+  background-color: var(--color-danger-bg);
 }
 
 .action-success-message,
@@ -59,20 +59,20 @@
 }
 
 .action-success-message {
-  background-color: #e8f5e9;
-  color: #2e7d32;
-  border-left: 4px solid #2e7d32;
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+  border-left: 4px solid var(--color-success);
 }
 
 .action-error-message {
-  background-color: #ffebee;
-  color: #d32f2f;
-  border-left: 4px solid #d32f2f;
+  background-color: var(--color-danger-bg);
+  color: var(--color-danger);
+  border-left: 4px solid var(--color-danger);
 }
 
 .users-table-container {
   overflow-x: auto;
-  background-color: white;
+  background-color: var(--color-card-bg);
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -86,17 +86,17 @@
 .users-table td {
   padding: 12px 15px;
   text-align: left;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .users-table th {
-  background-color: #f5f5f5;
+  background-color: var(--color-bg-secondary);
   font-weight: 600;
-  color: #333;
+  color: var(--color-text-primary);
 }
 
 .users-table tr:hover {
-  background-color: #f9f9f9;
+  background-color: var(--color-bg-secondary);
 }
 
 .role-badge {
@@ -109,13 +109,13 @@
 }
 
 .role-badge.admin {
-  background-color: #e3f2fd;
-  color: #1976d2;
+  background-color: var(--color-info-bg);
+  color: var(--color-info);
 }
 
 .role-badge.staff {
-  background-color: #e8f5e9;
-  color: #388e3c;
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
 }
 
 .user-actions {
@@ -134,21 +134,21 @@
 }
 
 .edit-btn {
-  background-color: #2196f3;
+  background-color: var(--color-accent);
   color: white;
 }
 
 .edit-btn:hover {
-  background-color: #1976d2;
+  background-color: var(--color-hover);
 }
 
 .delete-btn {
-  background-color: #f44336;
+  background-color: var(--color-danger);
   color: white;
 }
 
 .delete-btn:hover {
-  background-color: #d32f2f;
+  background-color: #BB2D3B;
 }
 
 /* Modal styles */
@@ -166,7 +166,7 @@
 }
 
 .modal-content {
-  background-color: white;
+  background-color: var(--color-card-bg);
   border-radius: 8px;
   width: 90%;
   max-width: 500px;
@@ -180,13 +180,13 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .modal-header h2 {
   margin: 0;
   font-size: 20px;
-  color: #333;
+  color: var(--color-text-primary);
 }
 
 .close-modal {
@@ -194,11 +194,11 @@
   border: none;
   font-size: 24px;
   cursor: pointer;
-  color: #666;
+  color: var(--color-text-secondary);
 }
 
 .close-modal:hover {
-  color: #333;
+  color: var(--color-text-primary);
 }
 
 /* Form styles */
@@ -225,21 +225,23 @@
   display: block;
   margin-bottom: 5px;
   font-weight: 500;
-  color: #333;
+  color: var(--color-text-primary);
 }
 
 .user-form input,
 .user-form select {
   width: 100%;
   padding: 8px 12px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border);
   border-radius: 4px;
   font-size: 14px;
+  background-color: var(--color-card-bg);
+  color: var(--color-text-primary);
 }
 
 .user-form input:focus,
 .user-form select:focus {
-  border-color: #2196f3;
+  border-color: var(--color-accent);
   outline: none;
 }
 
@@ -261,21 +263,22 @@
 }
 
 .cancel-btn {
-  background-color: #f5f5f5;
-  color: #333;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
 }
 
 .cancel-btn:hover {
-  background-color: #e0e0e0;
+  background-color: var(--color-text-secondary);
+  color: white;
 }
 
 .submit-btn {
-  background-color: #2196f3;
+  background-color: var(--color-accent);
   color: white;
 }
 
 .submit-btn:hover {
-  background-color: #1976d2;
+  background-color: var(--color-hover);
 }
 
 /* Responsive adjustments */
