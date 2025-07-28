@@ -27,7 +27,7 @@ const InventoryPage = () => {
         setLoading(true);
         
         // Fetch inventory logs
-        let url = `/api/inventory/logs?page=${page}&limit=10`;
+        let url = `https://flipr-labs-web-development-hackathon.onrender.com/api/inventory/logs?page=${page}&limit=10`;
         if (actionFilter) url += `&action=${actionFilter}`;
         if (dateFilter) url += `&date=${dateFilter}`;
         
@@ -42,7 +42,7 @@ const InventoryPage = () => {
         setTotalPages(logsData.totalPages || 1);
         
         // Fetch products for the dropdown
-        const productsResponse = await fetch('/api/products');
+        const productsResponse = await fetch('https://flipr-labs-web-development-hackathon.onrender.com/api/products');
         
         if (!productsResponse.ok) {
           throw new Error('Failed to fetch products');
@@ -79,7 +79,7 @@ const InventoryPage = () => {
     try {
       setUpdateError(null);
       
-      const response = await fetch('/api/inventory/update', {
+      const response = await fetch('https://flipr-labs-web-development-hackathon.onrender.com/api/inventory/update', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -108,7 +108,7 @@ const InventoryPage = () => {
       setTimeout(() => setUpdateSuccess(false), 3000);
       
       // Refresh inventory logs
-      const logsResponse = await fetch(`/api/inventory/logs?page=${page}&limit=10`);
+      const logsResponse = await fetch(`https://flipr-labs-web-development-hackathon.onrender.com/api/inventory/logs?page=${page}&limit=10`);
       const logsData = await logsResponse.json();
       setInventoryLogs(logsData.logs);
       

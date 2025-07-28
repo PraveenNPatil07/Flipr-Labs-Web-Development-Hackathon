@@ -17,7 +17,7 @@ const DashboardPage = () => {
     const fetchDashboardData = async () => {
       try {
         // This would be replaced with an actual API call
-        const response = await fetch('/api/inventory/stats', {
+        const response = await fetch('https://flipr-labs-web-development-hackathon.onrender.com/api/inventory/stats', {
           credentials: 'include'
         });
 

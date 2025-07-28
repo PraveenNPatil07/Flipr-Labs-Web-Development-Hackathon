@@ -10,7 +10,7 @@ const ProductDetailsPage = () => {
   useEffect(() => {
     const fetchProductDetails = async () => {
       try {
-        const response = await fetch(`/api/products/${id}`);
+        const response = await fetch(`https://flipr-labs-web-development-hackathon.onrender.com/api/products/${id}`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

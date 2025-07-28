@@ -36,7 +36,7 @@ const ProfilePage = () => {
     const fetchUserProfile = async () => {
       try {
         setLoading(true);
-        const response = await fetch('/api/auth/profile');
+        const response = await fetch('https://flipr-labs-web-development-hackathon.onrender.com/api/auth/profile');
         
         if (!response.ok) {
           throw new Error('Failed to fetch user profile');
@@ -118,7 +118,7 @@ const ProfilePage = () => {
     try {
       setUpdateError(null);
       
-      const response = await fetch('/api/auth/profile', {
+      const response = await fetch('https://flipr-labs-web-development-hackathon.onrender.com/api/auth/profile', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -159,7 +159,7 @@ const ProfilePage = () => {
     try {
       setPasswordError(null);
       
-      const response = await fetch('/api/auth/change-password', {
+      const response = await fetch('https://flipr-labs-web-development-hackathon.onrender.com/api/auth/change-password', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

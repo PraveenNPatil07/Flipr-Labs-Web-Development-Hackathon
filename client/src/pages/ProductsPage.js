@@ -26,7 +26,7 @@ const ProductsPage = () => {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        const response = await fetch('/api/products');
+        const response = await fetch('https://flipr-labs-web-development-hackathon.onrender.com/api/products');
         
         if (!response.ok) {
           throw new Error('Failed to fetch products');
@@ -63,7 +63,7 @@ const ProductsPage = () => {
     e.preventDefault();
     
     try {
-      const response = await fetch('/api/products', {
+      const response = await fetch('https://flipr-labs-web-development-hackathon.onrender.com/api/products', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

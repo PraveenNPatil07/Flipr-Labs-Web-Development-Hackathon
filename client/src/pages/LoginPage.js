@@ -29,7 +29,7 @@ const LoginPage = () => {
 
     try {
       // This would be replaced with an actual API call
-      const response = await fetch('/api/auth/login', {
+      const response = await fetch('https://flipr-labs-web-development-hackathon.onrender.com/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

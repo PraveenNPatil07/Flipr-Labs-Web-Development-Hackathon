@@ -191,9 +191,9 @@ const ReportsPage = () => {
           endDate: dateRange.endDate
         }).toString();
         switch (activeReport) {
-          case 'inventory': url = `/api/reports/inventory-value?${params}`; break;
-          case 'lowstock': url = `/api/reports/low-stock?${params}`; break;
-          default: url = `/api/reports/inventory-value?${params}`; break;
+          case 'inventory': url = `https://flipr-labs-web-development-hackathon.onrender.com/api/reports/inventory-value?${params}`; break;
+          case 'lowstock': url = `https://flipr-labs-web-development-hackathon.onrender.com/api/reports/low-stock?${params}`; break;
+          default: url = `https://flipr-labs-web-development-hackathon.onrender.com/api/reports/inventory-value?${params}`; break;
         }
         const response = await fetch(url);
         if (!response.ok) throw new Error(`Failed to fetch ${activeReport} report`);

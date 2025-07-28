@@ -34,7 +34,7 @@ const UsersPage = () => {
     const fetchUsers = async () => {
       try {
         setLoading(true);
-        const response = await fetch('/api/users');
+        const response = await fetch('https://flipr-labs-web-development-hackathon.onrender.com/api/users');
         
         if (!response.ok) {
           throw new Error('Failed to fetch users');
@@ -77,7 +77,7 @@ const UsersPage = () => {
     try {
       setActionError(null);
       
-      const response = await fetch('/api/users', {
+      const response = await fetch('https://flipr-labs-web-development-hackathon.onrender.com/api/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -122,7 +122,7 @@ const UsersPage = () => {
     try {
       setActionError(null);
       
-      const response = await fetch(`/api/users/${selectedUser.id}`, {
+      const response = await fetch(`https://flipr-labs-web-development-hackathon.onrender.com/api/users/${selectedUser.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -163,7 +163,7 @@ const UsersPage = () => {
     try {
       setActionError(null);
       
-      const response = await fetch(`/api/users/${userId}`, {
+      const response = await fetch(`https://flipr-labs-web-development-hackathon.onrender.com/api/users/${userId}`, {
         method: 'DELETE'
       });
       

@@ -13,7 +13,7 @@ const Notifications = () => {
     const fetchNotifications = async () => {
       try {
         setLoading(true);
-        const response = await fetch('/api/notifications');
+        const response = await fetch('https://flipr-labs-web-development-hackathon.onrender.com/api/notifications');
         
         if (!response.ok) {
           throw new Error('Failed to fetch notifications');
@@ -49,7 +49,7 @@ const Notifications = () => {
   // Mark notification as read
   const markAsRead = async (id) => {
     try {
-      const response = await fetch(`/api/notifications/${id}/read`, {
+      const response = await fetch(`https://flipr-labs-web-development-hackathon.onrender.com/api/notifications/${id}/read`, {
         method: 'PUT'
       });
       
@@ -73,7 +73,7 @@ const Notifications = () => {
   // Mark all notifications as read
   const markAllAsRead = async () => {
     try {
-      const response = await fetch('/api/notifications/read-all', {
+      const response = await fetch('https://flipr-labs-web-development-hackathon.onrender.com/api/notifications/read-all', {
         method: 'PUT'
       });
       

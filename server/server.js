@@ -41,12 +41,12 @@ import inventoryRoutes from './routes/inventory.routes.js';
 import notificationRoutes from './routes/notification.routes.js';
 import reportRoutes from './routes/report.routes.js';
 
-app.use('/api/auth', authRoutes);
-app.use('/api/users', userRoutes);
-app.use('/api/products', productRoutes);
-app.use('/api/inventory', inventoryRoutes);
-app.use('/api/notifications', notificationRoutes);
-app.use('/api/reports', reportRoutes);
+app.use('https://flipr-labs-web-development-hackathon.onrender.com/api/auth', authRoutes);
+app.use('https://flipr-labs-web-development-hackathon.onrender.com/api/users', userRoutes);
+app.use('https://flipr-labs-web-development-hackathon.onrender.com/api/products', productRoutes);
+app.use('https://flipr-labs-web-development-hackathon.onrender.com/api/inventory', inventoryRoutes);
+app.use('https://flipr-labs-web-development-hackathon.onrender.com/api/notifications', notificationRoutes);
+app.use('https://flipr-labs-web-development-hackathon.onrender.com/api/reports', reportRoutes);
 
 // Import error handler
 import { errorHandler } from './utils/error.utils.js';
