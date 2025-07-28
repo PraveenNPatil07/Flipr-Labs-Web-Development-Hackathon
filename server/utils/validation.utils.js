@@ -108,7 +108,7 @@ const validateInventoryUpdate = (updateData) => {
   };
 };
 
-module.exports = {
+export {
   isValidEmail,
   validatePassword,
   validateProductData,

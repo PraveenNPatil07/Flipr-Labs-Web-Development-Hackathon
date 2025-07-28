@@ -173,7 +173,7 @@ const getStockMovementReport = async (req, res) => {
  * @param {Object} res - The response object.
  * @returns {void} Sends a JSON response with low stock product details.
  */
-const getLowStockReport = async (req, res) => {
+ const getLowStockReport = async (req, res) => {
   try {
     const lowStockProducts = await Product.findAll({
       where: {

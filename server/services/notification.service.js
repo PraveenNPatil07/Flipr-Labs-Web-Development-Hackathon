@@ -1,6 +1,7 @@
-const nodemailer = require('nodemailer');
-const { User, NotificationPreference, Product } = require('../models');
-const { sequelize } = require('../config/database');
+import { User, NotificationPreference, Product } from '../models/index.js';
+import { sequelize } from '../config/database.js';
+import nodemailer from 'nodemailer';
+
 
 // Configure nodemailer transporter
 const transporter = nodemailer.createTransport({
@@ -107,7 +108,7 @@ const checkLowStockAndNotify = async () => {
   }
 };
 
-module.exports = {
+export {
   sendEmail,
   sendLowStockNotification,
   checkLowStockAndNotify

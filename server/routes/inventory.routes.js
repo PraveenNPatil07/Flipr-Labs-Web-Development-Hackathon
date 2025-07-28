@@ -1,12 +1,7 @@
-const express = require('express');
+import express from 'express';
+import { updateStock, getInventoryLogs, getLowStockProducts, getInventoryStats } from '../controllers/inventory.controller.js';
+import { protect, admin } from '../middleware/auth.middleware.js';
 const router = express.Router();
-const {
-  updateStock,
-  getInventoryLogs,
-  getLowStockProducts,
-  getInventoryStats
-} = require('../controllers/inventory.controller');
-const { protect, admin } = require('../middleware/auth.middleware');
 
 // Stock update and logs
 router.post('/update', protect, updateStock);
@@ -16,4 +11,4 @@ router.get('/logs', protect, getInventoryLogs);
 router.get('/low-stock', protect, getLowStockProducts);
 router.get('/stats', protect, getInventoryStats);
 
-module.exports = router;
+export default router;

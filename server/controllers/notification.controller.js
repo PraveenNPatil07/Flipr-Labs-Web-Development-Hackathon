@@ -1,4 +1,4 @@
-const { NotificationPreference, User, Notification } = require('../models');
+
 
 /**
  * @desc Retrieves the notification preferences for the authenticated user.
@@ -8,7 +8,11 @@ const { NotificationPreference, User, Notification } = require('../models');
  * @param {Object} res - The response object.
  * @returns {void} Sends a JSON response with the user's notification preferences.
  */
-const getNotificationPreferences = async (req, res) => {
+import NotificationPreference from '../models/notificationPreference.model.js';
+import User from '../models/user.model.js';
+import Notification from '../models/notification.model.js';
+
+export const getNotificationPreferences = async (req, res) => {
   try {
     const preferences = await NotificationPreference.findOne({
       where: { userId: req.user.id },
@@ -38,7 +42,7 @@ const getNotificationPreferences = async (req, res) => {
  * @param {Object} res - The response object.
  * @returns {void} Sends a JSON response with the updated notification preferences.
  */
-const updateNotificationPreferences = async (req, res) => {
+export const updateNotificationPreferences = async (req, res) => {
   try {
     const { emailEnabled, browserEnabled, slackEnabled, lowStockThreshold } = req.body;
 
@@ -81,7 +85,7 @@ const updateNotificationPreferences = async (req, res) => {
  * @param {Object} res - The response object.
  * @returns {void} Sends a JSON response indicating the success of the test notification.
  */
-const sendTestNotification = async (req, res) => {
+export const sendTestNotification = async (req, res) => {
   try {
     const { type } = req.body;
 
@@ -114,7 +118,7 @@ const sendTestNotification = async (req, res) => {
  * @param {Object} res - The response object.
  * @returns {void} Sends a JSON response with an array of notifications.
  */
-const getNotifications = async (req, res) => {
+export const getNotifications = async (req, res) => {
   try {
     const notifications = await Notification.findAll({
       where: { userId: req.user.id },
@@ -138,7 +142,7 @@ const getNotifications = async (req, res) => {
  * @param {Object} res - The response object.
  * @returns {void} Sends a JSON response indicating the notification has been marked as read.
  */
-const markNotificationAsRead = async (req, res) => {
+export const markNotificationAsRead = async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -168,7 +172,7 @@ const markNotificationAsRead = async (req, res) => {
  * @param {Object} res - The response object.
  * @returns {void} Sends a JSON response indicating all notifications have been marked as read.
  */
-const markAllNotificationsAsRead = async (req, res) => {
+export const markAllNotificationsAsRead = async (req, res) => {
   try {
     await Notification.update(
       { isRead: true },
@@ -180,13 +184,4 @@ const markAllNotificationsAsRead = async (req, res) => {
     console.error('Error marking all notifications as read:', error);
     res.status(500).json({ message: 'Server error', error: error.message });
   }
-};
-
-module.exports = {
-  getNotificationPreferences,
-  updateNotificationPreferences,
-  sendTestNotification,
-  getNotifications,
-  markNotificationAsRead,
-  markAllNotificationsAsRead,
 };

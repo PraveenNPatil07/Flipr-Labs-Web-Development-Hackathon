@@ -1,5 +1,5 @@
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
 
 /**
  * Generate a JWT token for a user
@@ -34,7 +34,7 @@ const comparePassword = async (enteredPassword, hashedPassword) => {
   return await bcrypt.compare(enteredPassword, hashedPassword);
 };
 
-module.exports = {
+export {
   generateToken,
   hashPassword,
   comparePassword

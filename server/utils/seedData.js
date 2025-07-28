@@ -1,6 +1,7 @@
-const { User, Product, NotificationPreference } = require('../models');
-const { col } = require('sequelize');
-const { hashPassword } = require('./auth.utils');
+import { col } from 'sequelize';
+import { hashPassword } from './auth.utils.js';
+import { User, NotificationPreference, Product } from '../models/index.js';
+
 
 /**
  * Seed the database with initial data
@@ -191,4 +192,4 @@ const seedDatabase = async () => {
   }
 };
 
-module.exports = { seedDatabase };
+export { seedDatabase };
