@@ -1,5 +1,7 @@
 /**
- * Custom error class for API errors
+ * @class ApiError
+ * @augments Error
+ * @description Custom error class for API errors with a specific status code.
  */
 class ApiError extends Error {
   constructor(message, statusCode) {
@@ -11,7 +13,9 @@ class ApiError extends Error {
 }
 
 /**
- * Not Found error - 404
+ * @class NotFoundError
+ * @augments ApiError
+ * @description Represents a 404 Not Found error.
  */
 class NotFoundError extends ApiError {
   constructor(message = 'Resource not found') {
@@ -20,7 +24,9 @@ class NotFoundError extends ApiError {
 }
 
 /**
- * Bad Request error - 400
+ * @class BadRequestError
+ * @augments ApiError
+ * @description Represents a 400 Bad Request error.
  */
 class BadRequestError extends ApiError {
   constructor(message = 'Bad request') {
@@ -29,7 +35,9 @@ class BadRequestError extends ApiError {
 }
 
 /**
- * Unauthorized error - 401
+ * @class UnauthorizedError
+ * @augments ApiError
+ * @description Represents a 401 Unauthorized error.
  */
 class UnauthorizedError extends ApiError {
   constructor(message = 'Unauthorized') {
@@ -38,7 +46,9 @@ class UnauthorizedError extends ApiError {
 }
 
 /**
- * Forbidden error - 403
+ * @class ForbiddenError
+ * @augments ApiError
+ * @description Represents a 403 Forbidden error.
  */
 class ForbiddenError extends ApiError {
   constructor(message = 'Forbidden') {
@@ -47,7 +57,9 @@ class ForbiddenError extends ApiError {
 }
 
 /**
- * Validation error - 422
+ * @class ValidationError
+ * @augments ApiError
+ * @description Represents a 422 Unprocessable Entity error, typically used for validation failures.
  */
 class ValidationError extends ApiError {
   constructor(message = 'Validation failed', errors = {}) {
@@ -57,7 +69,13 @@ class ValidationError extends ApiError {
 }
 
 /**
- * Error handler middleware
+ * @function errorHandler
+ * @description Global error handling middleware for Express.
+ * @param {Error} err - The error object.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @param {Function} next - The next middleware function.
+ * @returns {void} Sends a JSON response with error details.
  */
 const errorHandler = (err, req, res, next) => {
   console.error(err);

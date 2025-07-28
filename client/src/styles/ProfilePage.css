@@ -6,14 +6,14 @@
 
 .profile-container h1 {
   margin-bottom: 24px;
-  color: #2c3e50;
+  color: var(--color-text-primary);
   font-size: 28px;
 }
 
 /* Success Message */
 .profile-success-message {
-  background-color: #d4edda;
-  color: #155724;
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
   padding: 12px 20px;
   border-radius: 4px;
   margin-bottom: 20px;
@@ -23,8 +23,8 @@
 
 /* Error Message */
 .profile-error-message {
-  background-color: #ffebee;
-  color: #e74c3c;
+  background-color: var(--color-danger-bg);
+  color: var(--color-danger);
   padding: 12px 15px;
   border-radius: 4px;
   margin-bottom: 15px;
@@ -33,7 +33,7 @@
 
 /* Profile Card */
 .profile-card {
-  background-color: white;
+  background-color: var(--color-card-bg);
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   overflow: hidden;
@@ -43,7 +43,7 @@
   display: flex;
   align-items: center;
   padding: 20px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--color-border);
   position: relative;
 }
 
@@ -51,7 +51,7 @@
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  background-color: #3498db;
+  background-color: var(--color-accent);
   color: white;
   display: flex;
   align-items: center;
@@ -67,18 +67,18 @@
 
 .profile-title h2 {
   margin: 0 0 5px;
-  color: #2c3e50;
+  color: var(--color-text-primary);
   font-size: 22px;
 }
 
 .profile-role {
   margin: 0;
-  color: #7f8c8d;
+  color: var(--color-text-secondary);
   font-size: 14px;
 }
 
 .edit-profile-btn {
-  background-color: #3498db;
+  background-color: var(--color-accent);
   color: white;
   border: none;
   border-radius: 4px;
@@ -90,7 +90,7 @@
 }
 
 .edit-profile-btn:hover {
-  background-color: #2980b9;
+  background-color: var(--color-hover);
 }
 
 /* Profile Details */
@@ -104,10 +104,10 @@
 
 .detail-group h3 {
   margin: 0 0 15px;
-  color: #34495e;
+  color: var(--color-text-primary);
   font-size: 18px;
   padding-bottom: 8px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .detail-row {
@@ -118,12 +118,12 @@
 .detail-label {
   width: 150px;
   font-weight: 600;
-  color: #7f8c8d;
+  color: var(--color-text-secondary);
 }
 
 .detail-value {
   flex: 1;
-  color: #2c3e50;
+  color: var(--color-text-primary);
 }
 
 /* Password Section */
@@ -133,18 +133,18 @@
 
 .password-section h3 {
   margin: 0 0 15px;
-  color: #34495e;
+  color: var(--color-text-primary);
   font-size: 18px;
   padding-bottom: 8px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--color-border);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .change-password-btn {
-  background-color: #f1f3f5;
-  color: #2c3e50;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
   border: none;
   border-radius: 4px;
   padding: 8px 15px;
@@ -155,13 +155,14 @@
 }
 
 .change-password-btn:hover {
-  background-color: #e9ecef;
+  background-color: var(--color-hover);
+  color: white;
 }
 
 .password-form {
   margin-top: 15px;
   padding: 15px;
-  background-color: #f8f9fa;
+  background-color: var(--color-bg-secondary);
   border-radius: 4px;
 }
 
@@ -185,16 +186,18 @@
   display: block;
   margin-bottom: 5px;
   font-weight: 600;
-  color: #34495e;
+  color: var(--color-text-primary);
   font-size: 14px;
 }
 
 .form-group input {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border);
   border-radius: 4px;
   font-size: 15px;
+  background-color: var(--color-card-bg);
+  color: var(--color-text-primary);
 }
 
 /* Notification Preferences */
@@ -204,7 +207,7 @@
 
 .notification-preferences h3 {
   margin: 0 0 15px;
-  color: #34495e;
+  color: var(--color-text-primary);
   font-size: 18px;
 }
 
@@ -220,7 +223,7 @@
 
 .checkbox-group label {
   font-size: 14px;
-  color: #2c3e50;
+  color: var(--color-text-secondary);
 }
 
 /* Form Actions */
@@ -232,8 +235,8 @@
 }
 
 .cancel-btn {
-  background-color: #f1f3f5;
-  color: #2c3e50;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
   border: none;
   border-radius: 4px;
   padding: 10px 20px;
@@ -243,7 +246,7 @@
 }
 
 .save-btn {
-  background-color: #27ae60;
+  background-color: var(--color-success);
   color: white;
   border: none;
   border-radius: 4px;
@@ -254,11 +257,12 @@
 }
 
 .cancel-btn:hover {
-  background-color: #e9ecef;
+  background-color: var(--color-text-secondary);
+  color: white;
 }
 
 .save-btn:hover {
-  background-color: #219653;
+  background-color: #157347;
 }
 
 /* Loading and Error States */
@@ -267,11 +271,11 @@
   text-align: center;
   padding: 40px;
   font-size: 18px;
-  color: #7f8c8d;
+  color: var(--color-text-secondary);
 }
 
 .profile-error {
-  color: #e74c3c;
+  color: var(--color-danger);
 }
 
 /* Responsive Adjustments */

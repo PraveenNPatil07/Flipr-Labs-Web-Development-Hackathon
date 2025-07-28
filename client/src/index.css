@@ -4,36 +4,67 @@
 
 @layer base {
   :root {
-    --color-bg-primary: #F9FAFB;
-    --color-text-primary: #1F2937;
-    --color-bg-secondary: #F3F4F6;
-    --color-card-bg: #FFFFFF;
-    --color-border: #E5E7EB;
-    --color-input-bg: #edf2f7;
-    --color-input-text: #1F2937;
-    --color-placeholder-text: #A1A1AA;
-    --color-accent: #3B82F6; /* Blue for light mode */
-    --color-success: #10B981;
-    --color-danger: #f56565;
+    --color-bg-primary: #F8F9FA;           /* Light gray background */
+    --color-text-primary: #212529;         /* Dark gray text */
+    --color-bg-secondary: #E9ECEF;         /* Lighter gray */
+    --color-card-bg: #FFFFFF;              /* Pure white */
+    --color-border: #DEE2E6;               /* Light border */
+    --color-input-bg: #E9ECEF;             /* Input background */
+    --color-input-text: #212529;
+    --color-placeholder-text: #6C757D;     /* Gray placeholder */
+    --color-accent: #0D6EFD;               /* Primary blue */
+    --color-success: #198754;              /* Green */
+    --color-danger: #DC3545;               /* Red */
+    --color-warning: #FFC107;              /* Yellow */
+    --color-info: #0DCAF0;                 /* Cyan */
+    --color-text-secondary: #495057;       /* Secondary text */
+    --color-hover: #0B5ED7;                /* Darker blue for hover */
+    --color-success-bg: #D1E7DD;           /* Success background */
+    --color-danger-bg: #F8D7DA;            /* Danger background */
+    --color-warning-bg: #FFF3CD;           /* Warning background */
+    --color-info-bg: #CFF4FC;              /* Info background */
+    --color-report-text-primary: var(--color-text-primary);
+    --color-report-text-secondary: var(--color-text-secondary);
   }
 
   [data-theme='dark'] {
-    --color-bg-primary: #1E1E2F;
-    --color-text-primary: #FFFFFF;
-    --color-bg-secondary: #2C2C3A;
-    --color-card-bg: #252A3B;
-    --color-border: #3F3F46;
-    --color-input-bg: #2C2C3A;
-    --color-input-text: #FFFFFF;
-    --color-placeholder-text: #A1A1AA;
-    --color-accent: #60A5FA; /* Blue for dark mode */
-    --color-success: #4ADE80;
-    --color-danger: #fc8181;
+    --color-bg-primary: #212529;           /* Dark background */
+    --color-text-primary: #F8F9FA;         /* Light text */
+    --color-bg-secondary: #343A40;         /* Darker gray */
+    --color-card-bg: #2C3034;              /* Card background */
+    --color-border: #495057;               /* Border */
+    --color-input-bg: #343A40;             /* Input background */
+    --color-input-text: #F8F9FA;
+    --color-placeholder-text: #6C757D;
+    --color-accent: #0D6EFD;               /* Blue */
+    --color-success: #198754;              /* Green */
+    --color-danger: #DC3545;               /* Red */
+    --color-warning: #FFC107;              /* Yellow */
+    --color-info: #0DCAF0;                 /* Cyan */
+    --color-text-secondary: #ADB5BD;       /* Secondary text */
+    --color-hover: #0B5ED7;                /* Darker blue */
+    --color-success-bg: #1A3E2F;           /* Dark success */
+    --color-danger-bg: #3D1A1F;            /* Dark danger */
+    --color-warning-bg: #4D3E00;           /* Dark warning */
+    --color-info-bg: #0A3A47;              /* Dark info */
+    --color-report-text-primary: var(--color-text-primary);
+    --color-report-text-secondary: var(--color-text-secondary);
   }
-}
 
-body {
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  body {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-border);
+    border-radius: 10px;
+  }
 }

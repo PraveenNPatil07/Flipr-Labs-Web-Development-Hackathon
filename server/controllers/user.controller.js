@@ -2,9 +2,14 @@ const { User, NotificationPreference } = require('../models');
 const { ValidationError } = require('../utils/error.utils');
 const { isValidEmail, validatePassword } = require('../utils/validation.utils');
 
-// @desc    Get all users
-// @route   GET /api/users
-// @access  Private/Admin
+/**
+ * @desc Get all users
+ * @route GET /api/users
+ * @access Private/Admin
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @returns {void} Sends a JSON response with an array of user objects.
+ */
 const getUsers = async (req, res) => {
   try {
     const users = await User.findAll({
@@ -19,9 +24,16 @@ const getUsers = async (req, res) => {
   }
 };
 
-// @desc    Get user by ID
-// @route   GET /api/users/:id
-// @access  Private/Admin
+/**
+ * @desc Get user by ID
+ * @route GET /api/users/:id
+ * @access Private/Admin
+ * @param {Object} req - The request object.
+ * @param {Object} req.params - The route parameters.
+ * @param {string} req.params.id - The ID of the user to retrieve.
+ * @param {Object} res - The response object.
+ * @returns {void} Sends a JSON response with the user object or a 404 if not found.
+ */
 const getUserById = async (req, res) => {
   try {
     const user = await User.findByPk(req.params.id, {
@@ -40,9 +52,19 @@ const getUserById = async (req, res) => {
   }
 };
 
-// @desc    Create a new user
-// @route   POST /api/users
-// @access  Private/Admin
+/**
+ * @desc Create a new user
+ * @route POST /api/users
+ * @access Private/Admin
+ * @param {Object} req - The request object.
+ * @param {Object} req.body - The request body.
+ * @param {string} req.body.username - The username for the new user.
+ * @param {string} req.body.email - The email for the new user.
+ * @param {string} req.body.password - The password for the new user.
+ * @param {string} [req.body.role='Staff'] - The role of the new user (e.g., 'Admin', 'Staff').
+ * @param {Object} res - The response object.
+ * @returns {void} Sends a JSON response with the newly created user's details or validation errors.
+ */
 const createUser = async (req, res) => {
   try {
     const { username, email, password, role } = req.body;
@@ -110,9 +132,23 @@ const createUser = async (req, res) => {
   }
 };
 
-// @desc    Update user
-// @route   PUT /api/users/:id
-// @access  Private/Admin
+/**
+ * @desc Update user
+ * @route PUT /api/users/:id
+ * @access Private/Admin
+ * @param {Object} req - The request object.
+ * @param {Object} req.params - The route parameters.
+ * @param {string} req.params.id - The ID of the user to update.
+ * @param {Object} req.body - The request body.
+ * @param {string} [req.body.username] - The new username.
+ * @param {string} [req.body.email] - The new email.
+ * @param {string} [req.body.password] - The new password.
+ * @param {string} [req.body.role] - The new role.
+ * @param {string} [req.body.firstName] - The new first name.
+ * @param {string} [req.body.lastName] - The new last name.
+ * @param {Object} res - The response object.
+ * @returns {void} Sends a JSON response with the updated user's details or validation errors.
+ */
 const updateUser = async (req, res) => {
   try {
     const { username, email, password, role, firstName, lastName } = req.body;
@@ -170,9 +206,16 @@ const updateUser = async (req, res) => {
   }
 };
 
-// @desc    Delete user
-// @route   DELETE /api/users/:id
-// @access  Private/Admin
+/**
+ * @desc Delete user
+ * @route DELETE /api/users/:id
+ * @access Private/Admin
+ * @param {Object} req - The request object.
+ * @param {Object} req.params - The route parameters.
+ * @param {string} req.params.id - The ID of the user to delete.
+ * @param {Object} res - The response object.
+ * @returns {void} Sends a JSON response confirming user deletion or a 404 if not found.
+ */
 const deleteUser = async (req, res) => {
   try {
     const user = await User.findByPk(req.params.id);

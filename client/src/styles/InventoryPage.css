@@ -13,12 +13,12 @@
 
 .inventory-header h1 {
   margin: 0;
-  color: #2c3e50;
+  color: var(--color-text-primary);
   font-size: 28px;
 }
 
 .update-inventory-btn {
-  background-color: #3498db;
+  background-color: var(--color-accent);
   color: white;
   border: none;
   border-radius: 4px;
@@ -30,7 +30,7 @@
 }
 
 .update-inventory-btn:hover {
-  background-color: #2980b9;
+  background-color: var(--color-hover);
 }
 
 /* Filters */
@@ -40,7 +40,7 @@
   gap: 15px;
   margin-bottom: 24px;
   padding: 15px;
-  background-color: #f8f9fa;
+  background-color: var(--color-bg-secondary);
   border-radius: 8px;
 }
 
@@ -53,21 +53,23 @@
 .filter-group label {
   font-weight: 600;
   font-size: 14px;
-  color: #34495e;
+  color: var(--color-text-primary);
 }
 
 .filter-group select,
 .filter-group input {
   padding: 8px 12px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border);
   border-radius: 4px;
   font-size: 14px;
   min-width: 180px;
+  background-color: var(--color-card-bg);
+  color: var(--color-text-primary);
 }
 
 .reset-filters-btn {
-  background-color: #f1f3f5;
-  color: #2c3e50;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
   border: none;
   border-radius: 4px;
   padding: 8px 15px;
@@ -79,13 +81,14 @@
 }
 
 .reset-filters-btn:hover {
-  background-color: #e9ecef;
+  background-color: var(--color-hover);
+  color: white;
 }
 
 /* Success Message */
 .update-success-message {
-  background-color: #d4edda;
-  color: #155724;
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
   padding: 12px 20px;
   border-radius: 4px;
   margin-bottom: 20px;
@@ -104,28 +107,28 @@
 .inventory-table {
   width: 100%;
   border-collapse: collapse;
-  background-color: white;
+  background-color: var(--color-card-bg);
 }
 
 .inventory-table th,
 .inventory-table td {
   padding: 12px 15px;
   text-align: left;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .inventory-table th {
-  background-color: #f8f9fa;
+  background-color: var(--color-bg-secondary);
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--color-text-primary);
 }
 
 .inventory-table tbody tr:hover {
-  background-color: #f8f9fa;
+  background-color: var(--color-bg-secondary);
 }
 
 .inventory-table a {
-  color: #3498db;
+  color: var(--color-accent);
   text-decoration: none;
   font-weight: 500;
 }
@@ -143,18 +146,18 @@
 }
 
 .action-badge.add {
-  background-color: #e8f5e9;
-  color: #27ae60;
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
 }
 
 .action-badge.remove {
-  background-color: #ffebee;
-  color: #e74c3c;
+  background-color: var(--color-danger-bg);
+  color: var(--color-danger);
 }
 
 .action-badge.adjust {
-  background-color: #e3f2fd;
-  color: #3498db;
+  background-color: var(--color-info-bg);
+  color: var(--color-info);
 }
 
 /* Pagination */
@@ -167,8 +170,8 @@
 }
 
 .pagination-btn {
-  background-color: #f1f3f5;
-  color: #2c3e50;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
   border: none;
   border-radius: 4px;
   padding: 8px 15px;
@@ -178,7 +181,8 @@
 }
 
 .pagination-btn:hover:not(:disabled) {
-  background-color: #e9ecef;
+  background-color: var(--color-hover);
+  color: white;
 }
 
 .pagination-btn:disabled {
@@ -188,7 +192,7 @@
 
 .page-info {
   font-size: 14px;
-  color: #7f8c8d;
+  color: var(--color-text-secondary);
 }
 
 /* Modal */
@@ -206,7 +210,7 @@
 }
 
 .modal-content {
-  background-color: white;
+  background-color: var(--color-card-bg);
   border-radius: 8px;
   width: 90%;
   max-width: 600px;
@@ -217,7 +221,7 @@
 
 .modal-header {
   padding: 15px 20px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--color-border);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -226,7 +230,7 @@
 .modal-header h2 {
   margin: 0;
   font-size: 20px;
-  color: #2c3e50;
+  color: var(--color-text-primary);
 }
 
 .close-modal {
@@ -234,7 +238,7 @@
   border: none;
   font-size: 24px;
   cursor: pointer;
-  color: #7f8c8d;
+  color: var(--color-text-secondary);
 }
 
 /* Form */
@@ -243,8 +247,8 @@
 }
 
 .update-error {
-  background-color: #ffebee;
-  color: #e74c3c;
+  background-color: var(--color-danger-bg);
+  color: var(--color-danger);
   padding: 12px 15px;
   border-radius: 4px;
   margin-bottom: 15px;
@@ -259,7 +263,7 @@
   display: block;
   margin-bottom: 5px;
   font-weight: 600;
-  color: #34495e;
+  color: var(--color-text-primary);
   font-size: 14px;
 }
 
@@ -268,9 +272,11 @@
 .form-group textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border);
   border-radius: 4px;
   font-size: 15px;
+  background-color: var(--color-card-bg);
+  color: var(--color-text-primary);
 }
 
 .form-group textarea {
@@ -285,8 +291,8 @@
 }
 
 .cancel-btn {
-  background-color: #f1f3f5;
-  color: #2c3e50;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
   border: none;
   border-radius: 4px;
   padding: 10px 20px;
@@ -296,7 +302,7 @@
 }
 
 .submit-btn {
-  background-color: #3498db;
+  background-color: var(--color-accent);
   color: white;
   border: none;
   border-radius: 4px;
@@ -307,11 +313,12 @@
 }
 
 .cancel-btn:hover {
-  background-color: #e9ecef;
+  background-color: var(--color-text-secondary);
+  color: white;
 }
 
 .submit-btn:hover {
-  background-color: #2980b9;
+  background-color: var(--color-hover);
 }
 
 /* Report Links */
@@ -323,8 +330,8 @@
 
 .report-link {
   display: inline-block;
-  background-color: #f8f9fa;
-  color: #2c3e50;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
   text-decoration: none;
   padding: 10px 15px;
   border-radius: 4px;
@@ -333,7 +340,8 @@
 }
 
 .report-link:hover {
-  background-color: #e9ecef;
+  background-color: var(--color-hover);
+  color: white;
 }
 
 /* Loading and Error States */
@@ -343,11 +351,11 @@
   text-align: center;
   padding: 40px;
   font-size: 18px;
-  color: #7f8c8d;
+  color: var(--color-text-secondary);
 }
 
 .inventory-error {
-  color: #e74c3c;
+  color: var(--color-danger);
 }
 
 /* Responsive Adjustments */

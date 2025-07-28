@@ -11,7 +11,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: var(--color-text-primary);
 }
 
 .notifications-icon {
@@ -22,7 +22,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  background-color: #f44336;
+  background-color: var(--color-danger);
   color: white;
   border-radius: 50%;
   width: 18px;
@@ -40,7 +40,7 @@
   right: 0;
   width: 320px;
   max-height: 400px;
-  background-color: white;
+  background-color: var(--color-card-bg);
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 1000;
@@ -54,20 +54,20 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px 15px;
-  border-bottom: 1px solid #eee;
-  background-color: #f9f9f9;
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-bg-secondary);
 }
 
 .notifications-header h3 {
   margin: 0;
   font-size: 16px;
-  color: #333;
+  color: var(--color-text-primary);
 }
 
 .mark-all-read {
   background: none;
   border: none;
-  color: #2196f3;
+  color: var(--color-accent);
   cursor: pointer;
   font-size: 13px;
   padding: 0;
@@ -87,12 +87,12 @@
 .no-notifications {
   padding: 20px;
   text-align: center;
-  color: #666;
+  color: var(--color-text-secondary);
   font-size: 14px;
 }
 
 .notifications-error {
-  color: #d32f2f;
+  color: var(--color-danger);
 }
 
 .notifications-list {
@@ -104,22 +104,23 @@
 .notification-item {
   display: flex;
   padding: 12px 15px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--color-border);
   cursor: pointer;
   transition: background-color 0.2s;
   position: relative;
 }
 
 .notification-item:hover {
-  background-color: #f5f5f5;
+  background-color: var(--color-bg-secondary);
 }
 
 .notification-item.unread {
-  background-color: #e3f2fd;
+  background-color: var(--color-bg-secondary);
 }
 
 .notification-item.unread:hover {
-  background-color: #bbdefb;
+  background-color: var(--color-hover);
+  color: white;
 }
 
 .notification-icon {
@@ -127,6 +128,7 @@
   font-size: 18px;
   display: flex;
   align-items: center;
+  color: var(--color-accent);
 }
 
 .notification-content {
@@ -135,21 +137,21 @@
 
 .notification-message {
   font-size: 14px;
-  color: #333;
+  color: var(--color-text-primary);
   margin-bottom: 4px;
   line-height: 1.4;
 }
 
 .notification-time {
   font-size: 12px;
-  color: #777;
+  color: var(--color-text-secondary);
 }
 
 .notification-unread-indicator {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: #2196f3;
+  background-color: var(--color-accent);
   margin-left: 10px;
   align-self: center;
 }

@@ -3,13 +3,13 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f5f5f5;
+  background-color: var(--color-bg-primary);
   padding: 20px;
 }
 
 .not-found-content {
   text-align: center;
-  background-color: white;
+  background-color: var(--color-card-bg);
   padding: 40px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -20,18 +20,18 @@
 .not-found-content h1 {
   font-size: 80px;
   margin: 0;
-  color: #e74c3c;
+  color: var(--color-danger);
   line-height: 1;
 }
 
 .not-found-content h2 {
   font-size: 24px;
   margin: 10px 0 20px;
-  color: #333;
+  color: var(--color-text-primary);
 }
 
 .not-found-content p {
-  color: #666;
+  color: var(--color-text-secondary);
   margin-bottom: 30px;
   font-size: 16px;
   line-height: 1.5;
@@ -39,7 +39,7 @@
 
 .back-home-btn {
   display: inline-block;
-  background-color: #3498db;
+  background-color: var(--color-accent);
   color: white;
   padding: 10px 20px;
   border-radius: 4px;
@@ -49,7 +49,7 @@
 }
 
 .back-home-btn:hover {
-  background-color: #2980b9;
+  background-color: var(--color-hover);
 }
 
 /* Responsive adjustments */
