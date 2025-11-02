@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1000" height="800" xmlns="http://www.w3.org/2000/svg">
+  <!-- ER Diagram for Inventory Management System -->
+  
+  <!-- Styles -->
+  <style>
+    .entity { fill: #e6f2ff; stroke: #3366cc; stroke-width: 2; }
+    .relationship { fill: #ffe6cc; stroke: #ff9933; stroke-width: 2; }
+    .attribute { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .pk { font-weight: bold; text-decoration: underline; }
+    .fk { font-style: italic; }
+    .title { font-family: Arial; font-size: 24px; font-weight: bold; }
+    .label { font-family: Arial; font-size: 12px; }
+    .relationship-label { font-family: Arial; font-size: 11px; font-style: italic; }
+    .cardinality { font-family: Arial; font-size: 12px; font-weight: bold; }
+    .connector { stroke: #666666; stroke-width: 1; }
+  </style>
+  
+  <!-- Title -->
+  <text x="500" y="30" text-anchor="middle" class="title">Inventory Management System - ER Diagram</text>
+  
+  <!-- User Entity -->
+  <rect x="50" y="100" width="200" height="220" rx="5" ry="5" class="entity" />
+  <text x="150" y="125" text-anchor="middle" class="label">User</text>
+  <line x1="50" y1="135" x2="250" y2="135" stroke="#3366cc" stroke-width="1" />
+  <text x="60" y="155" class="label pk">id (UUID, PK)</text>
+  <text x="60" y="175" class="label">username (STRING, UNIQUE)</text>
+  <text x="60" y="195" class="label">email (STRING, UNIQUE)</text>
+  <text x="60" y="215" class="label">firstName (STRING)</text>
+  <text x="60" y="235" class="label">lastName (STRING)</text>
+  <text x="60" y="255" class="label">password (STRING)</text>
+  <text x="60" y="275" class="label">role (ENUM: Admin, Staff)</text>
+  <text x="60" y="295" class="label">createdAt (DATETIME)</text>
+  <text x="60" y="315" class="label">updatedAt (DATETIME)</text>
+  
+  <!-- Product Entity -->
+  <rect x="700" y="100" width="200" height="260" rx="5" ry="5" class="entity" />
+  <text x="800" y="125" text-anchor="middle" class="label">Product</text>
+  <line x1="700" y1="135" x2="900" y2="135" stroke="#3366cc" stroke-width="1" />
+  <text x="710" y="155" class="label pk">id (UUID, PK)</text>
+  <text x="710" y="175" class="label">sku (STRING, UNIQUE)</text>
+  <text x="710" y="195" class="label">name (STRING)</text>
+  <text x="710" y="215" class="label">barcode (STRING, UNIQUE)</text>
+  <text x="710" y="235" class="label">category (STRING)</text>
+  <text x="710" y="255" class="label">stock (INTEGER)</text>
+  <text x="710" y="275" class="label">threshold (INTEGER)</text>
+  <text x="710" y="295" class="label">expiryDate (DATE)</text>
+  <text x="710" y="315" class="label">description (TEXT)</text>
+  <text x="710" y="335" class="label">price (DECIMAL(10,2))</text>
+  <text x="710" y="355" class="label">createdAt (DATETIME)</text>
+  
+  <!-- NotificationPreference Entity -->
+  <rect x="50" y="400" width="200" height="180" rx="5" ry="5" class="entity" />
+  <text x="150" y="425" text-anchor="middle" class="label">NotificationPreference</text>
+  <line x1="50" y1="435" x2="250" y2="435" stroke="#3366cc" stroke-width="1" />
+  <text x="60" y="455" class="label pk">id (UUID, PK)</text>
+  <text x="60" y="475" class="label fk">userId (UUID, FK)</text>
+  <text x="60" y="495" class="label">emailEnabled (BOOLEAN)</text>
+  <text x="60" y="515" class="label">browserEnabled (BOOLEAN)</text>
+  <text x="60" y="535" class="label">slackEnabled (BOOLEAN)</text>
+  <text x="60" y="555" class="label">lowStockThreshold (INTEGER)</text>
+  
+  <!-- Notification Entity -->
+  <rect x="350" y="400" width="200" height="160" rx="5" ry="5" class="entity" />
+  <text x="450" y="425" text-anchor="middle" class="label">Notification</text>
+  <line x1="350" y1="435" x2="550" y2="435" stroke="#3366cc" stroke-width="1" />
+  <text x="360" y="455" class="label pk">id (UUID, PK)</text>
+  <text x="360" y="475" class="label fk">userId (UUID, FK)</text>
+  <text x="360" y="495" class="label">type (STRING)</text>
+  <text x="360" y="515" class="label">message (STRING)</text>
+  <text x="360" y="535" class="label">isRead (BOOLEAN)</text>
+  <text x="360" y="555" class="label">createdAt (DATETIME)</text>
+  
+  <!-- InventoryLog Entity -->
+  <rect x="700" y="400" width="200" height="220" rx="5" ry="5" class="entity" />
+  <text x="800" y="425" text-anchor="middle" class="label">InventoryLog</text>
+  <line x1="700" y1="435" x2="900" y2="435" stroke="#3366cc" stroke-width="1" />
+  <text x="710" y="455" class="label pk">id (UUID, PK)</text>
+  <text x="710" y="475" class="label fk">productId (UUID, FK)</text>
+  <text x="710" y="495" class="label fk">userId (UUID, FK)</text>
+  <text x="710" y="515" class="label">action (ENUM: Add, Remove, Update)</text>
+  <text x="710" y="535" class="label">quantity (INTEGER)</text>
+  <text x="710" y="555" class="label">previousStock (INTEGER)</text>
+  <text x="710" y="575" class="label">newStock (INTEGER)</text>
+  <text x="710" y="595" class="label">notes (TEXT)</text>
+  <text x="710" y="615" class="label">createdAt (DATETIME)</text>
+  
+  <!-- Relationships -->
+  
+  <!-- User to NotificationPreference (1:1) -->
+  <line x1="150" y1="320" x2="150" y2="400" class="connector" />
+  <text x="160" y="360" class="cardinality">1</text>
+  <text x="160" y="390" class="cardinality">1</text>
+  <text x="180" y="370" class="relationship-label">has</text>
+  
+  <!-- User to Notification (1:N) -->
+  <line x1="250" y1="200" x2="350" y2="450" class="connector" />
+  <text x="260" y="200" class="cardinality">1</text>
+  <text x="340" y="440" class="cardinality">N</text>
+  <text x="300" y="350" class="relationship-label">receives</text>
+  
+  <!-- User to InventoryLog (1:N) -->
+  <line x1="250" y1="250" x2="700" y2="500" class="connector" />
+  <text x="260" y="250" class="cardinality">1</text>
+  <text x="690" y="500" class="cardinality">N</text>
+  <text x="450" y="350" class="relationship-label">creates</text>
+  
+  <!-- Product to InventoryLog (1:N) -->
+  <line x1="800" y1="360" x2="800" y2="400" class="connector" />
+  <text x="810" y="380" class="cardinality">1</text>
+  <text x="810" y="400" class="cardinality">N</text>
+  <text x="820" y="380" class="relationship-label">tracked in</text>
+  
+  <!-- Legend -->
+  <rect x="50" y="650" width="200" height="100" rx="5" ry="5" fill="#ffffff" stroke="#000000" stroke-width="1" />
+  <text x="150" y="670" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">Legend</text>
+  <line x1="60" y1="680" x2="240" y2="680" stroke="#000000" stroke-width="1" />
+  <text x="60" y="700" font-family="Arial" font-size="12" font-weight="bold" text-decoration="underline">PK</text>
+  <text x="90" y="700" font-family="Arial" font-size="12">Primary Key</text>
+  <text x="60" y="720" font-family="Arial" font-size="12" font-style="italic">FK</text>
+  <text x="90" y="720" font-family="Arial" font-size="12">Foreign Key</text>
+  <text x="60" y="740" font-family="Arial" font-size="12" font-weight="bold">1:N</text>
+  <text x="90" y="740" font-family="Arial" font-size="12">One-to-Many Relationship</text>
+</svg>
